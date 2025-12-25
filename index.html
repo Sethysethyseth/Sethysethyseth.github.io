@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>For My Beautiful Girlfriend ❤️</DUDE HERES A PICTURE>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #111;
+      color: #fff;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      text-align: center;
+    }
+
+    .card {
+      padding: 20px;
+      max-width: 600px;
+    }
+
+    h1 {
+      margin-bottom: 10px;
+    }
+
+    #viewer img,
+    #viewer video {
+      max-width: 100%;
+      max-height: 60vh;
+      border-radius: 12px;
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 10px 18px;
+      border-radius: 999px;
+      border: none;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>For My Beautiful Girlfriend 💕</h1>
+    <p>Here’s a random memory every time 💌</p>
+
+    <div id="viewer"></div>
+
+    <button id="newBtn">New random memory</button>
+  </div>
+
+  <script>
+    // 🔁 List of your images/videos
+    // Put your real filenames here (see step 2)
+    const media = [
+      { type: "image", src: "media/pic1.jpg" },
+      { type: "image", src: "media/pic2.jpg" },
+      { type: "image", src: "media/pic3.png" },
+      { type: "video", src: "media/video1.mp4" }
+    ];
+
+    function showRandom() {
+      const viewer = document.getElementById("viewer");
+      viewer.innerHTML = ""; // clear previous
+
+      const item = media[Math.floor(Math.random() * media.length)];
+
+      if (item.type === "image") {
+        const img = document.createElement("img");
+        img.src = item.src;
+        img.alt = "A cute memory ❤️";
+        viewer.appendChild(img);
+      } else if (item.type === "video") {
+        const vid = document.createElement("video");
+        vid.src = item.src;
+        vid.autoplay = true;
+        vid.loop = true;
+        vid.muted = true;
+        vid.controls = true;
+        viewer.appendChild(vid);
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      showRandom(); // show one on load
+      document.getElementById("newBtn").addEventListener("click", showRandom);
+    });
+  </script>
+</body>
+</html>
