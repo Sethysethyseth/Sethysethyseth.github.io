@@ -43,6 +43,7 @@
     }
   </style>
 </head>
+
 <body>
   <div class="card">
     <h1>For My Beautiful Beautiful</h1>
@@ -54,8 +55,6 @@
   </div>
 
   <script>
-    // 🔁 List of your images/videos
-    // Put your real filenames here (see step 2)
 const media = [
   { type: "video", src: "PICTURES/Snapchat-1258028697.mp4" },
   { type: "video", src: "PICTURES/Snapchat-1275117265.mp4" },
@@ -87,26 +86,32 @@ const media = [
   { type: "image", src: "PICTURES/Snapchat-2108498166.jpg" }
 ];
 
+function showRandom() {
+  const viewer = document.getElementById("viewer");
+  viewer.innerHTML = "";
 
+  const item = media[Math.floor(Math.random() * media.length)];
 
-    function showRandom() {
-      const viewer = document.getElementById("viewer");
-      viewer.innerHTML = ""; // clear previous
+  if (item.type === "image") {
+    const img = document.createElement("img");
+    img.src = item.src;
+    img.alt = "Dude look at this!!!";
+    viewer.appendChild(img);
+  } else if (item.type === "video") {
+    const vid = document.createElement("video");
+    vid.src = item.src;
+    vid.autoplay = true;
+    vid.loop = true;
+    vid.muted = true;
+    vid.controls = true;
+    viewer.appendChild(vid);
+  }
+}
 
-      const item = media[Math.floor(Math.random() * media.length)];
-
-      if (item.type === "image") {
-        const img = document.createElement("img");
-        img.src = item.src;
-        img.alt = "Dude look at this!!!";
-        viewer.appendChild(img);
-      } else if (item.type === "video") {
-        const vid = document.createElement("video");
-        vid.src = item.src;
-        vid.autoplay = true;
-        vid.loop = true;
-        vid.muted = true;
-        vid.controls = true;
-        viewer.appendChild(vid);
-      }
-    }
+document.addEventListener("DOMContentLoaded", () => {
+  showRandom();
+  document.getElementById("newBtn").addEventListener("click", showRandom);
+});
+  </script>
+</body>
+</html>
